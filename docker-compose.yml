@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+
+  php:
+
+    restart: always
+
+    build: .
+
+    dns: 1.1.1.1
+
+    ports:
+
+      - "80:80"
+
+    volumes:
+
+      - ".:/var/www/html"
+
+      - "/tmp:/tmp"
+
+      - "/var/tmp:/var/tmp"
+
+    tmpfs:
+
+      - /var/cache
+
+      - /var/log
+
+      - /var/run
+
+    shm_size: 2g
+
+    hostname: "localhost"
+
+    network_mode: "host"
