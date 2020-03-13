@@ -1,8 +1,8 @@
 # lapi
-- Linux
-- Apache
-- PHP7
-- ImageMagick
+- **L**inux
+- **A**pache
+- **P**HP7
+- **I**mageMagick
 
 Docker 及び docker-compose をインストールし、本フォルダ内で端末を開き下記コードを実行すると、上記環境が構築されドキュメントルートとなります。
 
@@ -10,7 +10,7 @@ Docker 及び docker-compose をインストールし、本フォルダ内で端
 docker-compose up --build
 ```
 
-## 設定
+## 設定例
 
 000-default.conf
 ```
