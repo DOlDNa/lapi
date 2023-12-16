@@ -1,12 +1,14 @@
-version: "2"
-
 services:
 
   lapi:
 
     restart: always
 
-    build: .
+    build:
+
+        context: .
+
+        network: host
 
     ports:
 
@@ -26,10 +28,17 @@ services:
 
       - /var/log
 
+      - /var/lib/apt
+
       - /var/run
 
     shm_size: 2g
 
-    hostname: "localhost"
+    hostname: localhost
 
-    network_mode: "host"
+    dns:
+
+      - 1.1.1.1
+
+      - 8.8.8.8
+
