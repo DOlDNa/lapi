@@ -1,0 +1,21 @@
+services:
+  lapi:
+    restart: always
+    build:
+        context: .
+        shm_size: 2g
+    ports:
+      - "80:80"
+    volumes:
+      - ".:/var/www/html"
+      - "/tmp:/tmp"
+      - "/var/tmp:/var/tmp"
+    tmpfs:
+      - /var/cache
+      - /var/log
+      - /var/lib/apt
+      - /var/run
+    hostname: localhost
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
