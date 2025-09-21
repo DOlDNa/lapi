@@ -10,6 +10,7 @@ services:
       - ".:/var/www/html"
       - "/tmp:/tmp"
       - "/var/tmp:/var/tmp"
+#      - "./msmtprc:/etc/msmtprc"
     tmpfs:
       - /var/cache
       - /var/log
