@@ -15,7 +15,8 @@ services:
       - /var/log
       - /var/lib/apt
       - /var/run
-    hostname: localhost
+      - /var/spool
+    hostname: lapihost
     dns:
       - 1.1.1.1
       - 8.8.8.8
