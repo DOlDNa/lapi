@@ -1,16 +1,17 @@
 FROM php:8-apache
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    locales locales-all \
-    libonig-dev \
-    libfreetype6-dev \
-    libjpeg-dev \
-    libpng-dev \
-    msmtp \
-    libmagickwand-dev && \
-    apt-get clean -y && \
-    rm -rf /var/lib/apt/lists/*
+	apt-get install -y --no-install-recommends \
+	locales locales-all \
+	libonig-dev \
+	libfreetype6-dev \
+	libjpeg62-turbo-dev \
+	libpng-dev \
+	libwebp-dev \
+	msmtp \
+	libmagickwand-dev && \
+	apt-get clean -y && \
+	rm -rf /var/lib/apt/lists/*
 
 # Enable Apache modules
 RUN a2enmod expires headers rewrite
@@ -18,9 +19,9 @@ RUN a2dismod status
 
 RUN pecl install imagick
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install intl exif gd && \
-    docker-php-ext-enable imagick
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
+	docker-php-ext-install intl exif gd && \
+	docker-php-ext-enable imagick
 
 # Ensure PHP uses OpenSSL
 ENV PHP_OPENSSL=yes
@@ -43,4 +44,4 @@ RUN docker-php-source delete
 
 # Remove unnecessary packages
 RUN apt-get clean -y && \
-    rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/*
